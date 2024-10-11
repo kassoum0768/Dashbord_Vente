@@ -1,0 +1,10 @@
+let
+    Source = #date(2017, 1, 1),
+    DateDébut = Source,
+    DateFin = #date(2019, 12, 31),
+    NbdeJrs = Duration.Days( DateFin - DateDébut),
+    Dates = List.Dates(DateDébut, NbdeJrs+1, #duration(1,0,0,0)),
+    #"Converti en table" = Table.FromList(Dates, Splitter.SplitByNothing(), null, null, ExtraValues.Error)
+
+in
+    #"Converti en table"
